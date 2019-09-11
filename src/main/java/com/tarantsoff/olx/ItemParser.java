@@ -18,19 +18,20 @@ public class ItemParser {
                 adItemInnerTable.selectFirst(TITLE_PATH).text();
         String price =
                 adItemInnerTable.selectFirst(PRICE_PATH).text();
-        String thumb =
-                adItemInnerTable.selectFirst(THUMB_PATH).attr(SRC_ATTR);
         String href =
                 adItemInnerTable.selectFirst(HREF_PATH).absUrl(HREF_ATTR);
-        String location =
-                adItemInnerTable.selectFirst(LOCATION_PATH).text();
+        String district =
+                adItemInnerTable.selectFirst(DISTRICT_PATH).text();
+
+        Element element = adItemInnerTable.selectFirst(THUMB_PATH);
+        String thumb = element == null ? "" : element.attr(SRC_ATTR);
 
         return Item.builder()
                    .dataId(dataId)
                    .title(title)
                    .href(href)
                    .price(price)
-                   .location(location)
+                   .location(district)
                    .thumbSrc(thumb)
                    .build();
     }

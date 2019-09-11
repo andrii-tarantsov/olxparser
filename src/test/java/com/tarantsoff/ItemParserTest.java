@@ -26,7 +26,6 @@ public class ItemParserTest {
                 .map(itemParser::parse)
                 .collect(Collectors.toList());
 
-        Long previousDataId = 0L;
         for (Item item : items) {
             assertNotNull(item.getLocation());
             assertNotNull(item.getHref());
@@ -35,11 +34,6 @@ public class ItemParserTest {
             assertNotNull(item.getThumbSrc());
 
             assertThat(0L, lessThan(item.getDataId()));
-
-            assertThat("expected greater Id", previousDataId, lessThan(item.getDataId()));
-
-            previousDataId = item.getDataId();
-
         }
 
     }
