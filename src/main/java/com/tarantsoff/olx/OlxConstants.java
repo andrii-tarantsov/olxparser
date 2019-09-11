@@ -16,4 +16,11 @@ public interface OlxConstants {
 
         String SINGLE_BEDROOM_RENT = "https://www.olx.ua/nedvizhimost/kvartiry-komnaty/kharkov/q-%D1%81%D0%BD%D1%8F%D1%82%D1%8C-%D0%B4%D0%BE%D0%BC/";
     }
+
+    interface Attributes {
+
+        String DATA_ID_ATTR = "data-id";
+        String SRC_ATTR = "src";
+        String HREF_ATTR = "href";
+    }
 }
