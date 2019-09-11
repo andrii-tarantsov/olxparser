@@ -5,20 +5,23 @@ import org.jsoup.nodes.Element;
 
 public class ItemParser {
 
-    public Item parse(Element houseRow) {
+    public Item parse(Element adItemInnerTable) {
 
+        long dataId =
+                Long.parseLong(adItemInnerTable.attr("data-id"));
         String title =
-                houseRow.selectFirst("tr:nth-child(1) > td.title-cell > div > h3 > a > strong").text();
+                adItemInnerTable.selectFirst(OlxResultSelector.TITLE_PATH).text();
         String price =
-                houseRow.selectFirst("tr:nth-child(1) > td.wwnormal.tright.td-price > div > p > strong").text();
+                adItemInnerTable.selectFirst(OlxResultSelector.PRICE_PATH).text();
         String thumb =
-                houseRow.selectFirst("tr:nth-child(1) > td:nth-child(1) > a > img").attr("src");
+                adItemInnerTable.selectFirst(OlxResultSelector.THUMB_PATH).attr("src");
         String href =
-                houseRow.selectFirst("tr:nth-child(1) > td.title-cell > div > h3 > a").absUrl("href");
+                adItemInnerTable.selectFirst(OlxResultSelector.HREF_PATH).absUrl("href");
         String location =
-                houseRow.selectFirst("tr:nth-child(2) > td.bottom-cell > div > p > small:nth-child(1) > span").text();
+                adItemInnerTable.selectFirst(OlxResultSelector.LOCATION_PATH).text();
 
         return Item.builder()
+                   .dataId(dataId)
                    .title(title)
                    .href(href)
                    .price(price)
