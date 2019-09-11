@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ItemParserTest {
     @Test
@@ -30,7 +31,7 @@ public class ItemParserTest {
             assertNotNull(item.getTitle());
             assertNotNull(item.getThumbSrc());
 
-            // assertTrue(item.getDataId() != 0);
+            assertTrue(item.getDataId() != 0);
         }
 
     }
