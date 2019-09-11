@@ -10,7 +10,7 @@ public class OlxParserDemo {
 
     public static void main(String[] args) throws IOException {
 
-        Document doc = new OlxQuery().requestForOneBadrooms();
+        Document doc = new OlxQuery().requestForOneBedrooms();
 
         ResultsPageParser resultsPageParser = new ResultsPageParser(new ItemParser());
 

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class ItemParserTest {
     @Test
     public void testParse(){
-        Document doc = new OlxQuery().requestForOneBadrooms();
+        Document doc = new OlxQuery().requestForOneBedrooms();
 
         Elements results = doc.select(OlxResultSelector.OFFERS_TABLE_PATH);
         ItemParser itemParser = new ItemParser();
