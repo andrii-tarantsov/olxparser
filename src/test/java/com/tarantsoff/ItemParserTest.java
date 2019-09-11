@@ -4,11 +4,13 @@ import com.tarantsoff.olx.ItemParser;
 import com.tarantsoff.olx.OlxQuery;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ItemParserTest {
     @Test
@@ -23,15 +25,14 @@ public class ItemParserTest {
                 .map(itemParser::parse)
                 .collect(Collectors.toList());
         for (Item item : items) {
-            Assertions.assertNotNull(item.getLocation());
-            Assertions.assertNotNull(item.getHref());
-            Assertions.assertNotNull(item.getPrice());
-            Assertions.assertNotNull(item.getTitle());
-            Assertions.assertNotNull(item.getThumbSrc());
+            assertNotNull(item.getLocation());
+            assertNotNull(item.getHref());
+            assertNotNull(item.getPrice());
+            assertNotNull(item.getTitle());
+            assertNotNull(item.getThumbSrc());
 
-            Assertions.assertTrue(item.getDataId() != 0);
+            assertTrue(item.getDataId() != 0);
         }
-
 
     }
 }
