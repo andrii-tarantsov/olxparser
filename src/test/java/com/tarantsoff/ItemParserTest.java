@@ -10,8 +10,9 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ItemParserTest {
     @Test
@@ -24,6 +25,8 @@ public class ItemParserTest {
                 .stream()
                 .map(itemParser::parse)
                 .collect(Collectors.toList());
+
+        Long previousDataId = 0L;
         for (Item item : items) {
             assertNotNull(item.getLocation());
             assertNotNull(item.getHref());
@@ -31,7 +34,12 @@ public class ItemParserTest {
             assertNotNull(item.getTitle());
             assertNotNull(item.getThumbSrc());
 
-            assertTrue(item.getDataId() != 0);
+            assertThat(0L, lessThan(item.getDataId()));
+
+            assertThat("expected greater Id", previousDataId, lessThan(item.getDataId()));
+
+            previousDataId = item.getDataId();
+
         }
 
     }
