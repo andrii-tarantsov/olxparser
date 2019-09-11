@@ -3,6 +3,8 @@ package com.tarantsoff.olx;
 import com.tarantsoff.Item;
 import org.jsoup.nodes.Element;
 
+import static com.tarantsoff.olx.OlxConstants.Selectors.*;
+
 public class ItemParser {
 
     public Item parse(Element adItemInnerTable) {
@@ -10,15 +12,15 @@ public class ItemParser {
         long dataId =
                 Long.parseLong(adItemInnerTable.attr("data-id"));
         String title =
-                adItemInnerTable.selectFirst(OlxResultSelector.TITLE_PATH).text();
+                adItemInnerTable.selectFirst(TITLE_PATH).text();
         String price =
-                adItemInnerTable.selectFirst(OlxResultSelector.PRICE_PATH).text();
+                adItemInnerTable.selectFirst(PRICE_PATH).text();
         String thumb =
-                adItemInnerTable.selectFirst(OlxResultSelector.THUMB_PATH).attr("src");
+                adItemInnerTable.selectFirst(THUMB_PATH).attr("src");
         String href =
-                adItemInnerTable.selectFirst(OlxResultSelector.HREF_PATH).absUrl("href");
+                adItemInnerTable.selectFirst(HREF_PATH).absUrl("href");
         String location =
-                adItemInnerTable.selectFirst(OlxResultSelector.LOCATION_PATH).text();
+                adItemInnerTable.selectFirst(LOCATION_PATH).text();
 
         return Item.builder()
                    .dataId(dataId)

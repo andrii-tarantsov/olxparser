@@ -2,7 +2,7 @@ package com.tarantsoff;
 
 import com.tarantsoff.olx.ItemParser;
 import com.tarantsoff.olx.OlxQuery;
-import com.tarantsoff.olx.OlxResultSelector;
+import com.tarantsoff.olx.OlxConstants;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ public class ItemParserTest {
     public void testParse(){
         Document doc = new OlxQuery().requestForOneBedrooms();
 
-        Elements results = doc.select(OlxResultSelector.OFFERS_TABLE_PATH);
+        Elements results = doc.select(OlxConstants.Selectors.OFFERS_TABLE_PATH);
         ItemParser itemParser = new ItemParser();
         List<Item> items = results
                 .stream()

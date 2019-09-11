@@ -16,7 +16,7 @@ public class ResultsPageParser {
     public List<Item> parse(Document document) {
 
         Elements results = document.select(
-                OlxResultSelector.OFFERS_TABLE_PATH);
+                OlxConstants.Selectors.OFFERS_TABLE_PATH);
         return results
                 .stream()
                 .map(itemParser::parse)
